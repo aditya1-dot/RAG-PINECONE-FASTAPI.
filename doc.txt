@@ -1,0 +1,46 @@
+Now, here's exactly how to test it in Postman:
+
+For the /batch-ingest endpoint:
+
+
+Method: POST
+URL: http://localhost:8000/batch-ingest
+In the Body tab:
+
+Select "form-data"
+Add these exact keys:
+
+Copyfiles: [Select File] (Type: File)  // Select your PDF file
+email: your.email@example.com (Type: Text)  // Type your email
+
+
+
+For the /query endpoint:
+
+
+Method: POST
+URL: http://localhost:8000/query
+In the Headers tab:
+
+Add: Content-Type: application/json
+
+
+In the Body tab:
+
+Select "raw"
+Select "JSON" from the dropdown
+Enter this exact JSON:
+
+
+
+jsonCopy{
+    "query": "Your question here",
+    "email": "your.email@example.com"
+}
+Here's a screenshot layout for Postman's PDF upload:
+Copy[ POST ] http://localhost:8000/batch-ingest
+└── Body (form-data)
+    ├── files   📎 [Select Files]  // Key type should be File
+    └── email   your.email@example.com   // Key type should be Text
+The files key can be repeated multiple times if you want to upload multiple PDFs at once. Make sure to use exactly the same keys (files and email) as shown above.
+
